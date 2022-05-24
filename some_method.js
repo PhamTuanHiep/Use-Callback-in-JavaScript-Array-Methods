@@ -30,19 +30,19 @@ var courses =[
         isFinish:false
     },
 ]
-
-Array.prototype.every2=function(callback){
+Array.prototype.some2=function(callback){
     for(var index in this){
         if(this.hasOwnProperty(index)){
             var result=callback(this[index],index,this)
-            if(!result){
-                return false
+            if(result){
+                return true;
             }
         }
     }
-    return true;
+    return false
 }
-var result=courses.every(function(element,index,array){
+// Bài toán tìm kiếm xem đã có học viên nào hoàn thành khoá học chưa ?
+var result=courses.some2(function(element,index,array){
     return element.isFinish;
 })
-console.log(result);
+console.log(result)
